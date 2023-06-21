@@ -1,0 +1,21 @@
+declare type AnimationNode = {
+    lastTimestamp: number;
+    toValue: number;
+    current: number;
+    velocity: number;
+    prevPosition?: number;
+};
+export declare type SpringConfig = {
+    damping: number;
+    mass: number;
+    stiffness: number;
+    overshootClamping: boolean;
+};
+export declare function springCalculation({ from, to, frame, fps, config, }: {
+    from?: number;
+    to?: number;
+    frame: number;
+    fps: number;
+    config?: Partial<SpringConfig>;
+}): AnimationNode;
+export {};

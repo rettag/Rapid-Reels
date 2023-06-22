@@ -33,7 +33,7 @@ async function CreateVideo(filenames) {
 export const fetchCreateVideo = async (videos) => {
     /* NEED TO CATCH ERRORS HERE!! */
     
-    if (videos.length != 1) {
+    if (videos.length !== 3) {
         console.log("Too many or not enough videos")
         return
     }

@@ -51,6 +51,7 @@ app.post('/create-video', (req, res) => {
 
       res.send({ status: 'Remotion Video Successfully Rendered'});
   });
+
 });
 
 

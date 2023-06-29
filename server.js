@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 app.post('/upload', upload.array('videos'), (req, res) => {
     console.log(req.files);
     res.send({ status: 'Videos Uploaded Successfully', files: req.files });
-  });
+});
 
 
 // Process & Create Remotion Video API Call
@@ -51,7 +51,21 @@ app.post('/create-video', (req, res) => {
 
       res.send({ status: 'Remotion Video Successfully Rendered'});
   });
+});
 
+// Upload Videos API Call
+app.post('/clean', (req, res) => {
+  exec(`bash bin/clean.sh`, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error executing script: ${error}`);
+      res.status(500).send('An error occurred while executing the script.');
+      return;
+    }
+    
+    console.log(`Script output: ${stdout}`);
+
+    res.send({ status: 'Successfully Cleaned Folders'});
+  });
 });
 
 

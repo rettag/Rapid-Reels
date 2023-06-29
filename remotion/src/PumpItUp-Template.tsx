@@ -1,4 +1,5 @@
 import {spring} from 'remotion';
+import { staticFile } from "remotion";
 //import { loadFont } from "@remotion/google-fonts/Roboto";
 
 import {
@@ -15,11 +16,19 @@ import {
 
 export const PumpItUpTemplate: React.FC = () => {
 
+	const video1= staticFile(`video-1.mp4`);
+	const video2= staticFile(`video-2.mp4`);
+	const video3= staticFile(`video-3.mp4`);
+
+	const dealDog = staticFile('dealdogicon.png');
+	const music = staticFile('pumpitup.mp3');
+
 	const orange = `rgb(${237}, ${148}, ${66})`
 	const red = `rgb(${255}, ${102}, ${115})`
 
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
+
 	
 	// Bass Effect
 	const scale = spring({
@@ -48,7 +57,7 @@ export const PumpItUpTemplate: React.FC = () => {
 		<>
 			<AbsoluteFill style={{fontWeight: 'bold', color: 'white'}}> {/* //fontFamily: fontFamily */}
 				{/* AUDIO */}
-				<Audio src={require('./assets/pumpitup.mp3')} />
+				<Audio src={music} />
 
 				<Series>
 					{/* FAST */}
@@ -60,7 +69,7 @@ export const PumpItUpTemplate: React.FC = () => {
 
 					{/* VIDEO FAST */}
 					<Series.Sequence durationInFrames={20}>
-						<Video src={require('./assets/video-1.mp4')} startFrom={100} endAt={150}/>
+						<Video src={video1} startFrom={100} endAt={150}/>
 					</Series.Sequence>
 
 					{/* SAFE */}
@@ -72,7 +81,7 @@ export const PumpItUpTemplate: React.FC = () => {
 
 					{/* VIDEO SAFE */}
 					<Series.Sequence durationInFrames={20}>
-						<Video src={require('./assets/video-2.mp4')} startFrom={170} endAt={300}/>
+						<Video src={video2} startFrom={170} endAt={300}/>
 					</Series.Sequence>
 					
 					{/* FUN */}
@@ -84,7 +93,7 @@ export const PumpItUpTemplate: React.FC = () => {
 
 					{/* VIDEO FUN */}
 					<Series.Sequence durationInFrames={20}>
-						<Video src={require('./assets/video-3.mp4')} startFrom={0} endAt={300}/>
+						<Video src={video3} startFrom={0} endAt={300}/>
 					</Series.Sequence>
 
 					{/* NEED TICKETS? */}
@@ -118,7 +127,7 @@ export const PumpItUpTemplate: React.FC = () => {
 								fontSize: '5vmin',
 							}}
 						>
-							<Img src={require('./assets/dealdogicon.png')} style={{transform: `scale(${scale})`, width: '40%', height: '20%'}} />
+							<Img src={dealDog} style={{transform: `scale(${scale})`, width: '40%', height: '20%'}} />
 						</div>
 					</Series.Sequence>
 				</Series>

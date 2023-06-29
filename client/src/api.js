@@ -1,3 +1,4 @@
+import Video from "./out/video.mp4";
 
 export const fetchSomething = async () => {
     return fetch('http://localhost:5000')
@@ -25,14 +26,46 @@ async function CreateVideo(filenames) {
         body: JSON.stringify(videoFiles),
     })
     .then(response => response.json())
-    .then(data => console.log('recieved data:', data))
+    .then(data => { console.log('recieved data:', data); return DownloadVideo(); })
     .catch(error => console.log(error));
 }
 
-//npx remotion render <entry-file> [<composition-id>] [<output-location>]
+async function DownloadVideo() {
+    const url = `./out/video.mp4`;
+
+    const link = document.createElement('a');
+    link.href = Video;
+    link.setAttribute(
+    'download',
+    `video.mp4`,
+    );
+
+    document.body.appendChild(link);
+
+    // Start download
+    link.click();
+
+    // Clean up and remove the link
+    link.parentNode.removeChild(link);
+
+    Clean();
+}
+
+async function Clean() {
+    const formData = new FormData();
+    fetch('http://localhost:5000/clean', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => { console.log('recieved data:', data); })
+    .catch(error => console.log(error));
+}
+
+
 export const fetchCreateVideo = async (videos) => {
     /* NEED TO CATCH ERRORS HERE!! */
-    
+
     if (videos.length !== 3) {
         console.log("Too many or not enough videos")
         return

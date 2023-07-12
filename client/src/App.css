@@ -1,38 +1,259 @@
-.App {
-  text-align: center;
+html {
+  font-family: "Montserrat";
+  color: #393939;
+  background-color: rgb(149, 177, 255);
+  line-height: 25px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Title */
+#title {
+  display: flex; 
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 5vmin;
+  font-weight: 600;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Welcome */
+#welcome {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* About */
+#about {
+  width: 90%;
+  margin: auto auto;
+}
+
+#about-title {
+  font-size: 2.5vmin;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-top: 40px;
+}
+
+#about-content {
+  background-color: white;
+  padding: 2vmin 2vmin;
+  border-radius: 2vmin;
+  margin-bottom: 40px;
+}
+
+/* Videos */
+#video-section {
+  width: 90%;
+  margin: auto auto;
+  margin-bottom: 5vmin;
+}
+
+#video-title {
+  font-size: 2.5vmin;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+#videos-needed {
+  margin-left: 3vmin;
+  font-size: 2vmin;
+}
+
+label {
+  background-color: rgb(98, 70, 255);
+  padding: 1.5vmin;
+  border-radius: 2vmin;
+  color: white;
+  cursor: pointer;
+  font-size: 2vmin;
+}
+
+label:hover {
+  background-color: rgb(84, 61, 214);
+}
+
+#video-buttons {
+  display: flex;
+  align-items: center;
+}
+
+#templates-title {
+  font-size: 2vmin;
+}
+
+#templates {
+  display: flex;
+  align-items: center;
+  margin-left: 2vmin;
+  background-color: white;
+  padding: .75vmin;
+  padding-left: 2vmin;
+  border-radius: 2vmin;
+  font-size: 2vmin;
+}
+
+#templates button {
+  background-color: rgb(98, 70, 255);
+  color: white;
+  cursor: pointer;
+  margin-left: 3vmin;
+  padding: 1.4vmin;
+  border-radius: 2vmin;
+  font-family: "Montserrat";
+  border: none;
+  font-size: 2vmin;
+}
+
+#templates button:hover {
+  background-color: rgb(84, 61, 214);
+}
+
+/* Videos Added */
+#videos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 30px;
+  background-color: white;
+  padding: 2vmin;
+  border-radius: 2vmin;
+}
+
+.video {
+  display: flex;
+  align-items: center;
+  padding: 1vmin;
+}
+
+.video button {
+  margin-right: 10px;
+  font-size: 2vmin;
+  font-weight: bold;
+  color: white;
+  background-color: red;
+  border: none;
+  cursor: pointer;
+  font-family: "Montserrat";
+}
+
+.video button:hover {
+  background-color: rgb(224, 0, 0);
+}
+
+/* Create Video Button */
+#create-button {
+  margin: auto auto;
+  width: 90%;
+}
+
+#create-button button {
+  border: none;
+  border-radius: 2vmin;
+  background-color: rgb(98, 70, 255);
+  color: white;
+  height: 8vmin;
+  width: 25vmin;
+  font-size: 3vmin;
+  font-family: "Montserrat";
+  cursor: pointer;
+}
+
+#create-button button:hover {
+  background-color: rgb(84, 61, 214);
+}
+
+/* Loading */
+#loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#loader {
+  width: 8vmin;
+  height: 8vmin;
+  border: 1vmin solid #ffffff;
+  border-top: 1vmin solid rgb(98, 70, 255);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+#loading-text {
+  margin-top: 2vmin;
+  font-size: 2vmin;
+  color: white;
+  font-weight: bold;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Is Done */
+#done {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 80vh;
+}
+
+#done-text {
+  font-size: 4vmin;
   color: white;
+  font-weight: 600;
+  margin-bottom: 1vmin;
 }
 
-.App-link {
-  color: #61dafb;
+#done-text-two {
+  font-style: italic;
+  margin-bottom: 8vmin;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#create-another-button button {
+  border: none;
+  border-radius: 2vmin;
+  background-color: rgb(98, 70, 255);
+  color: white;
+  height: 8vmin;
+  width: 25vmin;
+  font-size: 3vmin;
+  font-family: "Montserrat";
+  cursor: pointer;
+}
+
+#create-another-button button:hover {
+  background-color: rgb(84, 61, 214);
+}
+
+#done-buttons button {
+  border: none;
+  border-radius: 2vmin;
+  background-color: rgb(98, 70, 255);
+  color: white;
+  height: 8vmin;
+  width: 25vmin;
+  font-size: 3vmin;
+  font-family: "Montserrat";
+  cursor: pointer;
+}
+
+#done-buttons button:hover { 
+  background-color: rgb(84, 61, 214);
+}
+
+#done-buttons {
+  display: flex;
+}
+
+#download-button{
+  margin-right: 5vmin;
 }

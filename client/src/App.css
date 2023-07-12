@@ -257,3 +257,21 @@ label:hover {
 #download-button{
   margin-right: 5vmin;
 }
+
+/* Theme */
+#theme {
+  border: none;
+  border-radius: 2vmin;
+  background-color: rgb(98, 70, 255);
+  color: white;
+  padding: 1.5vmin;
+  font-size: 2vmin;
+  font-family: "Montserrat";
+  cursor: pointer;
+  margin-left: 2vmin;
+  text-align: center;
+}
+
+#theme:hover { 
+  background-color: rgb(84, 61, 214);
+}

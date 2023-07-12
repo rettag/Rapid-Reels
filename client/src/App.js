@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
+import { MASTER_SWITCH } from './masterswitch';
 
-// import Video from "./out/video.mp4";
 
 /* API Functions:
 (1) --> fetchCreateVideo()
@@ -27,10 +27,15 @@ function App() {
   const [selectedVideos, setSelectedVideos] = useState([]);
   const [selectedTemplate, setSelectedTemplate] = useState('');
 
-  const num_videos_required = {"pumpitup": 3, "sking": 5};
+  const num_videos_required = {"pumpitup": 3, "sking": 5}; // Add More To Here!
 
   const [isLoading, setIsLoading] = useState(false);
   const [isDone, setIsDone] = useState(false);
+
+  const [color1, setColor1] = useState('');
+  const [color2, setColor2] = useState('');
+
+  const [selectedTheme, setSelectedTheme] = useState('dealdog');
 
 
   // Handle Added Video
@@ -73,9 +78,46 @@ function App() {
     setIsDone(false);
   };
 
+  
+  // Handle The Theme Changing
+  const handleThemeChange = (event) => {
+    setSelectedTheme(event.target.value);
+    setColor1(MASTER_SWITCH[event.target.value]['info']['primary_color']);
+    setColor2(MASTER_SWITCH[event.target.value]['info']['secondary_color']);
+  };
+
+
   // Handle Create Video
   const fetchCreateVideo = async (videos) => {
+    if (selectedTheme === "") {
+      alert("Select A Theme!");
+    }
     setIsLoading(true);
+
+    console.log(color1);
+    console.log(color2);
+
+    // Change Colors
+    try {
+      const response = await fetch('http://localhost:5000/colors', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ color1, color2 }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data.message);
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.error);
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+
     const formData = new FormData();
 
     for (let i = 0; i < videos.length; i++) {
@@ -218,6 +260,51 @@ function App() {
               <button id="pumpitup" onClick={() => handleTemplateChange("pumpitup")}>Pump It Up</button>
               <button id="sking" onClick={() => handleTemplateChange("sking")}>Sking Meme</button>
             </div>
+            <select id="theme" value={selectedTheme} onChange={handleThemeChange}>
+              <option value="">Select Theme</option>
+              <option value="@vcu.edu">VCU</option>
+              <option value="@umich.edu">UMich</option>
+              <option value="@iu.edu">IU</option>
+              <option value="@umd.edu">UMD</option>
+              <option value="@msu.edu">MSU</option>
+              <option value="@rutgers.edu">Rutgers</option>
+              <option value="@illinois.edu">UI</option>
+              <option value="@uiowa.edu">UIowa</option>
+              <option value="@umn.edu">UMinn</option>
+              <option value="@unl.edu">UNL</option>
+              <option value="@purdue.edu">Purdue</option>
+              <option value="@wisc.edu">UWM</option>
+              <option value="@auburn.edu">AU</option>
+              <option value="@lsu.edu">LSU</option>
+              <option value="@msstate.edu">UMiss</option>
+              <option value="@tamu.edu">A&M</option>
+              <option value="@ua.edu">Bama</option>
+              <option value="@uark.edu">Uark</option>
+              <option value="@uga.edu">UGA</option>
+              <option value="@olemiss.edu">Ole Miss</option>
+              <option value="@vanderbilt.edu">Vandy</option>
+              <option value="@usc.edu">USC</option>
+              <option value="@ucla.edu">UCLA</option>
+              <option value="@stanford.edu">Stanford</option>
+              <option value="@uw.edu">UW</option>
+              <option value="@berkeley.edu">UCB</option>
+              <option value="@wsu.edu">WSU</option>
+              <option value="@arizona.edu">AU</option>
+              <option value="@Colorado.edu">Colorado</option>
+              <option value="@oregonstate.edu">OSU</option>
+              <option value="@bc.edu">BC</option>
+              <option value="@duke.edu">Duke</option>
+              <option value="@fsu.edu">FSU</option>
+              <option value="@gatech.edu">Gatech</option>
+              <option value="@miami.edu">Maimi</option>
+              <option value="@unc.edu">UNC</option>
+              <option value="@ncsu.edu">NSCU</option>
+              <option value="@nd.edu">UDU</option>
+              <option value="@pitt.edu">Pitt</option>
+              <option value="@virginia.edu">VU</option>
+              <option value="@vt.edu">VTU</option>
+              <option value="@wfu.edu">WFU</option>
+            </select>
             {/* Option For TikTok Api! */}
             <div id="videos-needed">
               { (num_videos_required[selectedTemplate] - selectedVideos.length === 0) ? (

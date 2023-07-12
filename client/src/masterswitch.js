@@ -2,6 +2,13 @@ import React from 'react'
 
 
 export const MASTER_SWITCH = {
+    "dealdog": {
+        "info": {
+            mascot: "Rams",
+            primary_color: "#ED9442",
+            secondary_color: "#FF6673",
+        },
+    }, 
     "@sjsu.edu": {
         subdomain: "sjsuspartans",
         linkId: "sjsu-athletics",

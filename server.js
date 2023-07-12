@@ -3,6 +3,7 @@ const multer = require('multer');
 const { exec } = require('child_process');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 app.use(cors());
@@ -83,6 +84,58 @@ app.get('/download', (req, res) => {
     if (error) {
       console.error(error);
       res.status(500).send('An error occurred during the file download.');
+    }
+  });
+});
+
+
+// Function to convert RGB color to hexadecimal format
+function rgbToHex(color) {
+  const rgbValues = color.substring(color.indexOf('(') + 1, color.lastIndexOf(')')).split(',');
+  const r = parseInt(rgbValues[0].trim(), 10).toString(16).padStart(2, '0');
+  const g = parseInt(rgbValues[1].trim(), 10).toString(16).padStart(2, '0');
+  const b = parseInt(rgbValues[2].trim(), 10).toString(16).padStart(2, '0');
+  return `#${r}${g}${b}`;
+}
+
+
+// Change Colors For Video
+app.put('/colors', (req, res) => {
+  // Read the Colors.ts file
+  fs.readFile('./remotion/public/Colors.ts', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: 'Failed to read Colors.ts' });
+    }
+
+    console.log(req.body.color2);
+    console.log(req.body.color1);
+
+    try {
+      // Replace the color1 and color2 values in the Colors.ts file
+      const color1Hex = rgbToHex(req.body.color1);
+      const color2Hex = rgbToHex(req.body.color2);
+
+      // Replace the color1 and color2 values in the Colors.ts file
+      const updatedData = data.replace(
+        /color1:\s+'#[^']+'/,
+        `color1: '${color1Hex}'`
+      ).replace(
+        /color2:\s+'#[^']+'/,
+        `color2: '${color2Hex}'`
+      );
+
+      fs.writeFile('./remotion/public/Colors.ts', updatedData, (err) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ error: 'Failed to write Colors.ts' });
+        }
+
+        return res.status(200).json({ message: 'Colors updated successfully' });
+      });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Failed to modify Colors.ts' });
     }
   });
 });

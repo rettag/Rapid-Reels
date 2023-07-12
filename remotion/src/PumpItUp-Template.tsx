@@ -1,5 +1,7 @@
 import {spring} from 'remotion';
 import { staticFile } from "remotion";
+import React from 'react';
+import { COLORS } from '../public/Colors';
 //import { loadFont } from "@remotion/google-fonts/Roboto";
 
 import {
@@ -44,7 +46,7 @@ export const PumpItUpTemplate: React.FC = () => {
 
 	// Fast, Safe, Fun Style
 	const textStyle = {
-		backgroundColor: orange,
+		background: `linear-gradient(to right, ${COLORS.color1}, ${COLORS.color2})`,
 		height: '100%',
 		width: '100%',
 		display: 'flex',
@@ -100,7 +102,7 @@ export const PumpItUpTemplate: React.FC = () => {
 					<Series.Sequence durationInFrames={20}>
 						<div
 							style={{
-								backgroundColor: orange,
+								background: `linear-gradient(to right, ${COLORS.color1}, ${COLORS.color2})`,
 								height: '100%',
 								width: '100%',
 								display: 'flex',
@@ -118,7 +120,7 @@ export const PumpItUpTemplate: React.FC = () => {
 					<Series.Sequence durationInFrames={80}>
 						<div
 							style={{
-								backgroundColor: orange,
+								background: `linear-gradient(to right, ${COLORS.color1}, ${COLORS.color2})`,
 								height: '100%',
 								width: '100%',
 								display: 'flex',

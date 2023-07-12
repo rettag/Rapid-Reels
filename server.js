@@ -2,10 +2,12 @@ const express = require('express');
 const multer = require('multer');
 const { exec } = require('child_process');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
 
 // Configuration For Uploads
 const fileStorageEngine = multer.diskStorage({
@@ -19,12 +21,14 @@ const fileStorageEngine = multer.diskStorage({
 
 const upload = multer({ storage: fileStorageEngine });
 
+
 // Setting Port
 const PORT = process.env.PORT || 5000;
 
+
 // Sanity Check API Call
 app.get('/', (req, res) => {
-  res.send({ text: 'Hello World!'});
+  res.send({ text: 'Welcome!'});
 });
 
 
@@ -53,6 +57,7 @@ app.post('/create-video', (req, res) => {
   });
 });
 
+
 // Upload Videos API Call
 app.post('/clean', (req, res) => {
   exec(`bash bin/clean.sh`, (error, stdout, stderr) => {
@@ -61,10 +66,24 @@ app.post('/clean', (req, res) => {
       res.status(500).send('An error occurred while executing the script.');
       return;
     }
-    
+
     console.log(`Script output: ${stdout}`);
 
     res.send({ status: 'Successfully Cleaned Folders'});
+  });
+});
+
+
+// Download Video API Call
+app.get('/download', (req, res) => {
+  console.log('Downloading Video')
+  const videoPath = path.join(__dirname, 'client/src/out/video.mp4');
+  console.log(videoPath);
+  res.sendFile(videoPath, (error) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send('An error occurred during the file download.');
+    }
   });
 });
 

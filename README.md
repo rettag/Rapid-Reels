@@ -7,7 +7,7 @@
 
 RapidReels is an intuitive website designed to streamline the video creation process, offering a diverse range of template options inspired by popular platforms like TikTok, YouTube Shorts, and Instagram Reels. With a simple click of a button, users can effortlessly select their desired template and create personalized videos within minutes. RapidReels empowers users to craft engaging and dynamic advertisements with ease.
 
-RapidReels is a MERN application ingtegrated with Remotion. Download the code to start the rapid creation of Tiktoks, YouTube Shorts, and Intagram Reels for your company today.
+RapidReels is a MERN application integrated with Remotion. Download the code to start the rapid creation of Tiktoks, YouTube Shorts, and Intagram Reels for your company today.
 
 ## Get Started
 All is assuming you are starting at your codes root directory.

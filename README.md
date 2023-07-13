@@ -1,5 +1,6 @@
 # RapidReels
 
+![Gif](rapid-reels.gif)
 
 ## Welcome
 <b>Welcome to RapidReels!</b>

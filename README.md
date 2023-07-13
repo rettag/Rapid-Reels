@@ -1,6 +1,6 @@
 # RapidReels
 
-![Gif](rapid-reels.gif){: style="border-radius: 5%;"}
+![Gif](rapid-reels.gif)
 
 ## Welcome
 <b>Welcome to RapidReels!</b>

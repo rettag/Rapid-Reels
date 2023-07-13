@@ -40,7 +40,7 @@ fromdos bin/script.sh
 ```
 
 ### Important!
-Make Sure Your are running the application in bash terminals
+<b>Make sure Your are running the application in bash terminals</b>
 
 
 

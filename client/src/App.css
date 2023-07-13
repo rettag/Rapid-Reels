@@ -25,6 +25,11 @@ html {
 #about {
   width: 90%;
   margin: auto auto;
+  transition: transform 1s ease;
+}
+
+#about:hover {
+  transform: scale(1.03);
 }
 
 #about-title {
@@ -39,6 +44,11 @@ html {
   padding: 2vmin 2vmin;
   border-radius: 2vmin;
   margin-bottom: 40px;
+}
+
+/* Discriptions */
+#discriptions {
+  display: flex;
 }
 
 /* Videos */

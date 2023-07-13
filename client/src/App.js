@@ -239,17 +239,21 @@ function App() {
         </>
         ) : (
         <>
-        <div id="about">
-          <div id="about-title">How To Use</div>
-          <div id="about-content">
-            RapidReels is an intuitive website designed to streamline the video creation process, 
-            offering a diverse range of template options inspired by popular platforms like TikTok,
-            YouTube shorts, and Instagram reels. With a simple click of a button, users can effortlessly
-            select their desired template and create personalized videos within minutes. By seamlessly
-            integrating their own videos through a drag-and-drop feature, RapidReels empowers users to
-            craft engaging and dynamic advertisements with ease.
+
+          <div id="about">
+            <div id="about-title">About</div>
+            <div id="about-content">
+              RapidReels is an intuitive website designed to streamline the video creation process, 
+              offering a diverse range of template options inspired by popular platforms like TikTok,
+              YouTube shorts, and Instagram reels. With a simple click of a button, users can effortlessly
+              select their desired template and create personalized videos within minutes. RapidReels empowers users to
+              craft engaging and dynamic advertisements with ease. There are four simple steps:
+              <b> ( 1 )</b> Choose A Theme
+              <b> ( 2 )</b> Choose A Template
+              <b> ( 3 )</b> Add Your Clips
+              <b> ( 4 )</b> Create Your Video
+            </div>
           </div>
-        </div>
 
         <div id="video-section">
           <div id="video-title">Create Your Video</div>
